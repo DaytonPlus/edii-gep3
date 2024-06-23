@@ -34,7 +34,7 @@ e) Cuando una persona publica alguna información importante, todos sus amigos l
 public List<Persona> AdyacentesA(Persona p) {
   List<Persona> adys = new LinkedList<>();
   int pos = personas.indexOf(p);
-  if(p == -1) return adys;
+  if(pos == -1) return adys;
   
   boolean amist = amistades[pos];
 
@@ -94,30 +94,24 @@ public int cantPersonasConKAmigos(entero k) {
 ```java
 // Respuesta d)
 public boolean personasPopularesConexion(Persona p1, Persona p2) {
-  if(AdyacentesA(p1).size() <= 10 || AdyacentesA(p1).size() <= 10) {
-    return false;
-  }
+  if(!esPopular(p1) || !esPopular(p2)) return false;
   
-  return BPP(p1, p2);
+  List<Persona> visitadas = new LinkedList<>();
+  
+  BPP(p1, visitadas);
+  
+  return visitadas.contains(p2);
 }
 
-public boolean BPP(Persona p1, Persona p2) {
-  Queue<Persona> cola = new Queue<>();
-  List<Persona> visitados = new LinkedList<>();
+public boolean esPopular(Persona p) {
+  return AdyacentesA(p).size() > 10;
+}
 
-  cola.offer(p1);
-
-  while(!cola.empty()) {
-    Persona p = cola.poll();
-    visitados.add(p);
-
-    for(Persona a : AdyacentesA(p)) {
-      if(a == p2) return true;
-      if(!visitados.contains(a)) cola.offer(a);
-    }
+public void BPP(Persona p, List<Persona> viditadas) {
+  visitados.add(p);
+  for(Persona a : AdyacentesA(p)) {
+    if(!visitados.contains(a)) BPP(a, visitadas);
   }
-  
-  return false;
 }
 ```
 
@@ -137,10 +131,14 @@ public List<Persona> personasSinEnterarse(Persona p) {
 }
 
 public void BPA(Persona p, List<Persona> visitadas) {
+  Queue<Persona> cola = new Queue<>();
   vistadas.add(p);
-  for(Persona a : AdyacentesA(p)) {
-    if(!visitadas.contains(a)) {
-      BPA(a, visitadas);
+  cola.offer(p);
+  while(!cola.empty()) {
+    Persona p1 = cola.poll();
+    visitadas.add(p1);
+    for(Persona a : AdyacentesA(p1)) {
+      if(!visitadas.contains(a)) ​cola.offer(a);
     }
   }
 }

@@ -24,11 +24,9 @@ public List<Computadora> AdyacentesA(Computadora c) {
   List<Computadora> adys = new LinkedList<>();
   int pos = computadoras.indexOf(c);
   if(c == -1) return adys;
-  
-  boolean conex = conexiones[pos];
 
-  for(int i=0;i<conex.length;i++) {
-    if(conex[i]) adys.add(computadoras.get(i));
+  for(int i=0;i<conexiones[pos].length;i++) {
+    if(conexiones[pos][i]) adys.add(computadoras.get(i));
   }
   
   return adys;
@@ -39,9 +37,13 @@ public List<Computadora> AdyacentesA(Computadora c) {
 // Respuesta a)
 public boolean HayMenosVulnerables() {
   for(Computadora c : computadoras) {
-    if(AdyacentesA(c)==0) return true;
+    if(esAislada(c)) return true;
   }
   return false;
+}
+
+public boolean esAislada(Computadora c) {
+  return AdyacentesA(c).isEmpty();
 }
 ```
 
