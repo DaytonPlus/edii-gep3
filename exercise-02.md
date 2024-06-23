@@ -12,14 +12,19 @@ En determinado sitio se tiene una enorme red de computadoras interconectadas. Es
 | # id: entero<br># ip: cadena<br># ubicacion: cadena                                   |
 | + Computadora()<br>+ getID(): entero<br>+ getIP(): cadena<br>+ getUbicacion(): cadena |
 a) Implemente el método HayMenosVulnerables(): lógico que permite determinar si hay al menos una computadora de baja vulnerabilidad, es decir, que no se comunica con ninguna otra computadora, por lo que ante un ataque no sería afectada.
-
-b) Implemente el método cuantasAltamenteVulnerable(composibles: `Lista<Computadora>`): entero, el cual retorna el número de computadoras altamente vulnerables de la lista pasada por parámetro. Una computadora es altamente vulnerable cuando tiene conexión con más de 4 computadoras.
-
-c) Se desea saber cuántos días tarda en infectarse con un virus X la computadora 2 luego de que se infecte la computadora 1. Cuando una computadora se infecta con el virus X, al día siguiente se propaga a todas las computadoras conectadas directamente a ella, ese proceso de propagación del virus continúa hasta que todas las computadoras a las que puede alcanzar estén infectadas. Implemente el método cuantosDiasTarda( computadora1: Computadora, computadora2: Computadora): entero, que devuelve la cantidad de días que demora en ser infectada la computadora 2 luego de que la computadora 1 fue infectada. Si no existiera comunicación entre estas dos computadoras se debe retornar -1.
-
-
-###### Respuestas
 ```java
+public boolean HayMenosVulnerables() {
+  for(Computadora c : computadoras) {
+    if(esAislada(c)) return true;
+  }
+  
+  return false;
+}
+
+public boolean esAislada(Computadora c) {
+  return AdyacentesA(c).isEmpty();
+}
+
 public List<Computadora> AdyacentesA(Computadora c) {
   List<Computadora> adys = new LinkedList<>();
   
@@ -34,23 +39,8 @@ public List<Computadora> AdyacentesA(Computadora c) {
 }
 ```
 
+b) Implemente el método cuantasAltamenteVulnerable(composibles: `Lista<Computadora>`): entero, el cual retorna el número de computadoras altamente vulnerables de la lista pasada por parámetro. Una computadora es altamente vulnerable cuando tiene conexión con más de 4 computadoras.
 ```java
-// Respuesta a)
-public boolean HayMenosVulnerables() {
-  for(Computadora c : computadoras) {
-    if(esAislada(c)) return true;
-  }
-  
-  return false;
-}
-
-public boolean esAislada(Computadora c) {
-  return AdyacentesA(c).isEmpty();
-}
-```
-
-```java
-// Respuesta b)
 public int cuantasAltamenteVulnerable(Lista<Computadora> composibles) {
   int cant = 0;
   
@@ -62,8 +52,8 @@ public int cuantasAltamenteVulnerable(Lista<Computadora> composibles) {
 }
 ```
 
+c) Se desea saber cuántos días tarda en infectarse con un virus X la computadora 2 luego de que se infecte la computadora 1. Cuando una computadora se infecta con el virus X, al día siguiente se propaga a todas las computadoras conectadas directamente a ella, ese proceso de propagación del virus continúa hasta que todas las computadoras a las que puede alcanzar estén infectadas. Implemente el método cuantosDiasTarda( computadora1: Computadora, computadora2: Computadora): entero, que devuelve la cantidad de días que demora en ser infectada la computadora 2 luego de que la computadora 1 fue infectada. Si no existiera comunicación entre estas dos computadoras se debe retornar -1.
 ```java
-// Respuesta c)
 public int cuantosDiasTarda(Computadora c1, Computadora c2) {
   int[] nivel = new int[computadoras.size()];
   

@@ -19,18 +19,18 @@ vértices – Matriz de adyacencia y se modela en el siguiente diagrama de clase
 | + RedSocial()<br>+ amigosEnComun(p1: Persona, p2: Persona): Lista\<Persona\><br>+ amistadCompleta(amigos: `Lista<Persona>)`: lógico<br>+ cantPersonasConKAmigos(k: entero): entero<br>+ personasPopularesConexion(p1: Persona, p2: Persona): lógico<br>+ personasSinEnterarse(persona: Persona): `Lista<Personas>` |
 
 a) Implemente el método amigosEnComun(p1: Persona, p2: Persona): `Lista<cadena>`, el cual recibe dos personas, p1 y p2, por parámetros y retorna la lista con los emails de las personas que son amigos de p1 y p2 al mismo tiempo.
-
-b) Implemente el método amistadCompleta(amigos: `Lista<Persona>`): lógico, el cual determina si el conjunto de personas, representado por la lista pasada por parámetro, tienen amistad completa. Amistad completa se tiene si entre cualquier par de personas del grafo, existe una arista.
-
-c) Cada cierto tiempo en la red social se hacen análisis y estadísticas con respecto a la cantidad de amigos que tienen los usuarios. Implemente el método cantPersonasConKAmigos(k: entero): entero, el cual retorna la cantidad de personas en la red social que tengan tantos amigos como el número pasado por parámetro. 
-
-d) Uno de los análisis que se realizan en la red social es ver si las personas populares, o sea, las que tengan más de 10 amigos, están conectadas. Implemente el método personasPopularesConexion(p1: Persona, p2: Persona): lógico, el cual devuelve verdadero en el caso de que las dos personas pasadas por parámetro tengan alguna conexión de amistades directa o indirectamente. Para realizar este procedimiento no se toman en cuenta las personas que no cumplan con las condiciones para ser populares.
-
-e) Cuando una persona publica alguna información importante, todos sus amigos la comparten a sus amigos directos para que estos la vean, a su vez, estos la vuelven a compartir, y así sucesivamente. Se puede intuir en el procedimiento anteriormente descrito que la divulgación de la información ocurre por niveles. Implemente el método personasSinEnterarse(persona: Persona): `Lista<Personas>`, el cual recibe por parámetro la persona que inicialmente hizo la publicación, y retorna la lista de personas que no podrán ver esa información si parte de ese usuario.
-
-###### Respuestas
-
 ```java
+public Lista<String> amigosEnComun(Persona p1, Persona p2) {
+  List<String> emails = new LinkedList<>();
+  List<Persona> adys = AdyacentesA(p1);
+
+  for(Persona p : AdyacentesA(p2)) {
+    if(adys.contains(p)) emails.add(p.getEmail());
+  }
+  
+  return emails;
+}
+
 public List<Persona> AdyacentesA(Persona p) {
   List<Persona> adys = new LinkedList<>();
   int pos = personas.indexOf(p);
@@ -46,22 +46,8 @@ public List<Persona> AdyacentesA(Persona p) {
 }
 ```
 
+b) Implemente el método amistadCompleta(amigos: `Lista<Persona>`): lógico, el cual determina si el conjunto de personas, representado por la lista pasada por parámetro, tienen amistad completa. Amistad completa se tiene si entre cualquier par de personas del grafo, existe una arista.
 ```java
-// Respuesta a)
-public Lista<String> amigosEnComun(Persona p1, Persona p2) {
-  List<String> emails = new LinkedList<>();
-  List<Persona> adys = AdyacentesA(p1);
-
-  for(Persona p : AdyacentesA(p2)) {
-    if(adys.contains(p)) emails.add(p.getEmail());
-  }
-  
-  return emails;
-}
-```
-
-```java
-// Respuesta b)
 public boolean amistadCompleta(Lista<Persona> amigos) {
   if(amigos.length == 0) return false;
 
@@ -76,8 +62,8 @@ public boolean amistadCompleta(Lista<Persona> amigos) {
 }
 ```
 
+c) Cada cierto tiempo en la red social se hacen análisis y estadísticas con respecto a la cantidad de amigos que tienen los usuarios. Implemente el método cantPersonasConKAmigos(k: entero): entero, el cual retorna la cantidad de personas en la red social que tengan tantos amigos como el número pasado por parámetro. 
 ```java
-// Respuesta c)
 public int cantPersonasConKAmigos(entero k) {
   int cant = 0;
   
@@ -89,8 +75,8 @@ public int cantPersonasConKAmigos(entero k) {
 }
 ```
 
+d) Uno de los análisis que se realizan en la red social es ver si las personas populares, o sea, las que tengan más de 10 amigos, están conectadas. Implemente el método personasPopularesConexion(p1: Persona, p2: Persona): lógico, el cual devuelve verdadero en el caso de que las dos personas pasadas por parámetro tengan alguna conexión de amistades directa o indirectamente. Para realizar este procedimiento no se toman en cuenta las personas que no cumplan con las condiciones para ser populares.
 ```java
-// Respuesta d)
 public boolean personasPopularesConexion(Persona p1, Persona p2) {
   if(!esPopular(p1) || !esPopular(p2)) return false;
   
@@ -113,8 +99,8 @@ public void BPP(Persona p, List<Persona> viditadas) {
 }
 ```
 
+e) Cuando una persona publica alguna información importante, todos sus amigos la comparten a sus amigos directos para que estos la vean, a su vez, estos la vuelven a compartir, y así sucesivamente. Se puede intuir en el procedimiento anteriormente descrito que la divulgación de la información ocurre por niveles. Implemente el método personasSinEnterarse(persona: Persona): `Lista<Personas>`, el cual recibe por parámetro la persona que inicialmente hizo la publicación, y retorna la lista de personas que no podrán ver esa información si parte de ese usuario.
 ```java
-// Respuesta e)
 public List<Persona> personasSinEnterarse(Persona p) {
   List<Persona> lista = new LinkedList<>();
   List<Persona> visitadas = new LinkedList<>();
