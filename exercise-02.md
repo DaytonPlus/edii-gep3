@@ -22,6 +22,7 @@ c) Se desea saber cuántos días tarda en infectarse con un virus X la computado
 ```java
 public List<Computadora> AdyacentesA(Computadora c) {
   List<Computadora> adys = new LinkedList<>();
+  
   int pos = computadoras.indexOf(c);
   if(c == -1) return adys;
 
@@ -39,6 +40,7 @@ public boolean HayMenosVulnerables() {
   for(Computadora c : computadoras) {
     if(esAislada(c)) return true;
   }
+  
   return false;
 }
 
@@ -51,9 +53,11 @@ public boolean esAislada(Computadora c) {
 // Respuesta b)
 public int cuantasAltamenteVulnerable(Lista<Computadora> composibles) {
   int cant = 0;
+  
   for(Computadora c : composibles) {
     if(AdyacentesA(c)>4) cant++;
   }
+  
   return cant;
 }
 ```
@@ -62,29 +66,32 @@ public int cuantasAltamenteVulnerable(Lista<Computadora> composibles) {
 // Respuesta c)
 public int cuantosDiasTarda(Computadora c1, Computadora c2) {
   int[] nivel = new int[computadoras.size()];
+  
   List<Computadora> visitadas = new LinkedList<>();
-
   Queue<Computadora> cola = new Queue<>();
   cola.offer(c1);
+  
   nivel[computadoras.indexOf(c1)] = 0;
   
   while(!cola.empty()) {
     Computadora c = cola.poll();
     visitadas.add(c);
+    
     int n = nivel[computadoras.indexOf(c)]
 
     for(Computadora a : AdyacentesA(c)) {
       if(!visitadas.contains(a)) {
-        nivel[computadoras.indexOf(a)] = n+1;
-        cola.offer(a);
         visitadas.add(a);
+        cola.offer(a);
+        
+        nivel[computadoras.indexOf(a)] = n+1;
       }
     }
   }
 
   int n = nivel[computadoras.indexOf(c2)];
-  if(n==0) return -1;
-  return n;
+  
+  return n ? n : -1;
 }
 
 ```

@@ -53,9 +53,7 @@ public Lista<String> amigosEnComun(Persona p1, Persona p2) {
   List<Persona> adys = AdyacentesA(p1);
 
   for(Persona p : AdyacentesA(p2)) {
-    if(adys.contains(p)) {
-      emails.add(p.getEmail());
-    }
+    if(adys.contains(p)) emails.add(p.getEmail());
   }
   
   return emails;
@@ -71,9 +69,7 @@ public boolean amistadCompleta(Lista<Persona> amigos) {
   List<Persona> adys = AdyacentesA(p0);
 
   for(Persona p : amigos) {
-    if(p != p0 && !adys.contains(p)) {
-      return false;
-    }
+    if(p != p0 && !adys.contains(p)) return false;
   }
   
   return true;
@@ -84,9 +80,11 @@ public boolean amistadCompleta(Lista<Persona> amigos) {
 // Respuesta c)
 public int cantPersonasConKAmigos(entero k) {
   int cant = 0;
+  
   for(Persona p : personas) {
     if(AdyacentesA(p).size() > k) cant++;
   }
+  
   return cant;
 }
 ```
@@ -130,14 +128,15 @@ public List<Persona> personasSinEnterarse(Persona p) {
   return lista;
 }
 
-public void BPA(Persona p, List<Persona> visitadas) {
+public void BPA(Persona persona, List<Persona> visitadas) {
   Queue<Persona> cola = new Queue<>();
-  vistadas.add(p);
-  cola.offer(p);
+  cola.offer(persona);
+  
   while(!cola.empty()) {
-    Persona p1 = cola.poll();
-    visitadas.add(p1);
-    for(Persona a : AdyacentesA(p1)) {
+    Persona p = cola.poll();
+    visitadas.add(p);
+    
+    for(Persona a : AdyacentesA(p)) {
       if(!visitadas.contains(a)) ​cola.offer(a);
     }
   }

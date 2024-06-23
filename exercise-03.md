@@ -19,6 +19,12 @@ b) Se quiere identificar quiénes del pueblo pierden dinero. Alguien pierde dine
 ```java
 // Respuesta a)
 public boolean sePidenEntreSi() {
+  for(int i=0;i<personas.length;i++) {
+    
+  }
+}
+
+public boolean lePide(int i1, int i2) {
 
 }
 ```
