@@ -12,6 +12,7 @@ Una empresa de envíos se encarga de entregas de paquetes por toda Europa, los c
 | :------------------------------------------------------------- |
 | # nombre: cadena<br># influencia: entero                       |
 | + Pais()<br>+ getNombre(): cadena<br>+ getInfluencia(): entero |
+
 a) Debe implementar el método altaImportancia(p: Pais): boolean que devuelve verdadero cuando un país tiene fronteras terrestres con más de 4 países o la importancia de 2 de los países con quienes colinda es mayor que 7.
 ```java
 public boolean altaImportancia(Pais p) {

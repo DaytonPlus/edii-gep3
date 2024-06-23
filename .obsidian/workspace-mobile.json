@@ -15,7 +15,7 @@
               "state": {
                 "file": "exercise-01.md",
                 "mode": "preview",
-                "source": false
+                "source": true
               }
             }
           }
@@ -133,14 +133,14 @@
   },
   "active": "7ee2c996a63b9a4f",
   "lastOpenFiles": [
-    "exercise-03.md",
-    "exercise-04.md",
-    "exercise-02.md",
-    "exercise-01.md",
-    "exercise-05.md",
     "exercise-08.md",
     "exercise-07.md",
     "exercise-06.md",
+    "exercise-05.md",
+    "exercise-04.md",
+    "exercise-03.md",
+    "exercise-02.md",
+    "exercise-01.md",
     "navbar.md",
     "index.md"
   ]

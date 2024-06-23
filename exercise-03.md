@@ -10,6 +10,7 @@ Para ellos se cuenta con el siguiente diagrama de clases:
 | :-------------------------------------------------------------------------------------------------------- |
 | personas: `Lista <cadena>`<br>conexiones: `logico [][]`                                                   |
 | + Pueblo()<br>+ sePidenEntreSi(): lógico<br>+ personasQuePierden(nombreInicial: cadena): `Lista <cadena>` |
+
 a) Implementa el método sePidenEntreSi(): lógico, que retorna verdadero si existe al menos un par de personas que se pidan dinero entre ellos, retorna falso en caso contrario.
 ```java
 public boolean sePidenEntreSi() {

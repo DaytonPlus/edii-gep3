@@ -11,6 +11,7 @@ En determinado sitio se tiene una enorme red de computadoras interconectadas. Es
 | :------------------------------------------------------------------------------------ |
 | # id: entero<br># ip: cadena<br># ubicacion: cadena                                   |
 | + Computadora()<br>+ getID(): entero<br>+ getIP(): cadena<br>+ getUbicacion(): cadena |
+
 a) Implemente el método HayMenosVulnerables(): lógico que permite determinar si hay al menos una computadora de baja vulnerabilidad, es decir, que no se comunica con ninguna otra computadora, por lo que ante un ataque no sería afectada.
 ```java
 public boolean HayMenosVulnerables() {
