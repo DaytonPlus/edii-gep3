@@ -108,9 +108,9 @@ public boolean esPopular(Persona p) {
 }
 
 public void BPP(Persona p, List<Persona> viditadas) {
-  visitados.add(p);
+  visitadas.add(p);
   for(Persona a : AdyacentesA(p)) {
-    if(!visitados.contains(a)) BPP(a, visitadas);
+    if(!visitadas.contains(a)) BPP(a, visitadas);
   }
 }
 ```
