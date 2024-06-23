@@ -68,7 +68,7 @@ public int cantPersonasConKAmigos(entero k) {
   int cant = 0;
   
   for(Persona p : personas) {
-    if(AdyacentesA(p).size() > k) cant++;
+    if(AdyacentesA(p).size() == k) cant++;
   }
   
   return cant;

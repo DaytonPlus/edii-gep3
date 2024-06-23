@@ -27,10 +27,10 @@ public boolean esAislada(Computadora c) {
 
 public List<Computadora> AdyacentesA(Computadora c) {
   List<Computadora> adys = new LinkedList<>();
+  int pos = c.getIndexOf(c);
   
-  int pos = computadoras.indexOf(c);
-  if(c == -1) return adys;
-
+  if(pos == -1) return adys;
+  
   for(int i=0;i<conexiones[pos].length;i++) {
     if(conexiones[pos][i]) adys.add(computadoras.get(i));
   }
@@ -45,7 +45,7 @@ public int cuantasAltamenteVulnerable(Lista<Computadora> composibles) {
   int cant = 0;
   
   for(Computadora c : composibles) {
-    if(AdyacentesA(c)>4) cant++;
+    if(AdyacentesA(c) > 4) cant++;
   }
   
   return cant;
@@ -55,33 +55,28 @@ public int cuantasAltamenteVulnerable(Lista<Computadora> composibles) {
 c) Se desea saber cuántos días tarda en infectarse con un virus X la computadora 2 luego de que se infecte la computadora 1. Cuando una computadora se infecta con el virus X, al día siguiente se propaga a todas las computadoras conectadas directamente a ella, ese proceso de propagación del virus continúa hasta que todas las computadoras a las que puede alcanzar estén infectadas. Implemente el método cuantosDiasTarda( computadora1: Computadora, computadora2: Computadora): entero, que devuelve la cantidad de días que demora en ser infectada la computadora 2 luego de que la computadora 1 fue infectada. Si no existiera comunicación entre estas dos computadoras se debe retornar -1.
 ```java
 public int cuantosDiasTarda(Computadora c1, Computadora c2) {
-  int[] nivel = new int[computadoras.size()];
-  
-  List<Computadora> visitadas = new LinkedList<>();
-  Queue<Computadora> cola = new Queue<>();
-  cola.offer(c1);
-  
-  nivel[computadoras.indexOf(c1)] = 0;
-  
-  while(!cola.empty()) {
-    Computadora c = cola.poll();
-    visitadas.add(c);
+    boolean[] visitadas = new boolean[computadoras.size()];
+    int[] dias = new int[computadoras.size()];
     
-    int n = nivel[computadoras.indexOf(c)]
-
-    for(Computadora a : AdyacentesA(c)) {
-      if(!visitadas.contains(a)) {
-        visitadas.add(a);
-        cola.offer(a);
-        
-        nivel[computadoras.indexOf(a)] = n+1;
-      }
-    }
-  }
-
-  int n = nivel[computadoras.indexOf(c2)];
+    Queue<Computadora> cola = new LinkedList<>();
+    cola.offer(c1);
+    visitadas[c1.getID()] = true;
+    dias[c1.getID()] = 0;
+    
+    while (!cola.isEmpty()) {
+        Computadora c = cola.poll();
+        if (a.equals(c2)) ​return dias[a.getID()];
   
-  return n ? n : -1;
+        for(Computadora a : AdyacentesA(c)) {
+            if (!visitadas[a.getID()]) {
+                visitadas[a.getID()] = true;
+                dias[a.getID()] = dias[c.getID()] + 1;
+                cola.offer(a);
+            }
+        }
+    }
+    
+    return -1;
 }
 
 ```

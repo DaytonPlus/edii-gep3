@@ -11,27 +11,43 @@ Para ellos se cuenta con el siguiente diagrama de clases:
 | personas: `Lista <cadena>`<br>conexiones: `logico [][]`                                                   |
 | + Pueblo()<br>+ sePidenEntreSi(): lógico<br>+ personasQuePierden(nombreInicial: cadena): `Lista <cadena>` |
 a) Implementa el método sePidenEntreSi(): lógico, que retorna verdadero si existe al menos un par de personas que se pidan dinero entre ellos, retorna falso en caso contrario.
-
-b) Se quiere identificar quiénes del pueblo pierden dinero. Alguien pierde dinero cuando, no gana, ni repone, o sea, cuando pregunta por dinero a dos personas que ya están dentro de la estafa. Para ello implemente el método personasQuePierden(nombreInicial: cadena): `Lista <cadena>`, el cual recibe por parámetro el nombre de la 1ra persona que comienza la estafa y retorna una lista con los nombres de las personas que pierden dinero.
-
-##### Respuestas
-
 ```java
-// Respuesta a)
 public boolean sePidenEntreSi() {
   for(int i=0;i<personas.length;i++) {
-    
+    for(int j=0;j<personas.length;j++) {
+      if(sePiden(i, j)) return true;
+    }
   }
+  return false;
 }
 
-public boolean lePide(int i1, int i2) {
-
+public boolean sePiden(int i, int j) {
+  return conexiones[i][j] && conexiones[j][i];
 }
 ```
 
+b) Se quiere identificar quiénes del pueblo pierden dinero. Alguien pierde dinero cuando, no gana, ni repone, o sea, cuando pregunta por dinero a dos personas que ya están dentro de la estafa. Para ello implemente el método personasQuePierden(nombreInicial: cadena): `Lista <cadena>`, el cual recibe por parámetro el nombre de la 1ra persona que comienza la estafa y retorna una lista con los nombres de las personas que pierden dinero.
 ```java
-// Respuesta b)
 public List<String> personasQuePierden(String nombreInicial) {
+    List<String> lista = new LinkedList<>();
+    List<String> visitadas = new LinkedList<>();
+    Queue<String> cola = new Queue<>();
+    cola.offer(nombreInicial);
+    visitadas.add(nombreInicial);
 
+    while (!cola.isEmpty()) {
+        String nombre = cola.poll();
+        visitadas.add(nombre);
+        
+        for (int i = 0; i < 2; i++) {
+            String conexion = conexiones[personas.indexOf(nombre)][i];
+            if (conexion != null && !visitadas.contains(conexion)) {
+                cola.offer(conexion);
+                lista.add(conexion);
+            }
+        }
+    }
+
+    return lista;
 }
 ```
