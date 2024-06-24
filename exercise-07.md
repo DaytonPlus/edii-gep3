@@ -43,7 +43,7 @@ public int salidaRapida(Sala origen) {
     for(Sala a : AdyacentesA(s)) {
       if(!visitadas.contains(a)) {
         cola.offer(a);
-        distancias[a.getID()] = s + 1;
+        distancias[a.getID()] = d + 1;
       }
     }
   }
