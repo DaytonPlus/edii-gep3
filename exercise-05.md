@@ -58,9 +58,21 @@ b) Cuando una casa tiene un cortocircuito en su red interna es posible que tenga
 ```java
 public Lista<Casa> casasEnRiesgo(Casa casa) {
   List<Casa> lista = new LinkedList<>();
+  List<Casa> visitadas = new LinkedList<>();
+  Queue<Casa> cola = new Queue<>();
   
-  for(Casa a : AdyacentesA(casa)) {
-    if(a.getCortoCircuito()) lista.add(a);
+  cola.offer(casa);
+  
+  while(!cola.empty()) {
+    Casa c = cola.poll();
+    visitadas.add(c);
+
+    for(Persona a : AdyacentesA(c)) {
+      if(!visitadas.contains(a) && a.getCortoCircuito()) {
+        cola.offer(a);
+        lista.add(a);
+      }
+    }
   }
   
   return lista;

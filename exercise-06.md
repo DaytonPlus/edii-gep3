@@ -26,16 +26,15 @@ a) Implemente el método esFraternidad(): logico que devuelve verdadero si la He
 public boolean esFraternidad() {
   for(int i=0;i<jugadores.size();i++) {
     for(int j=i+1;j<jugadores.size();j++) {
-      if(!sonAmigos(jugadores.get(i), jugadores.get(j))) {
-        return false;
-      }
+      if(!sonAmigos(i, j)) return false;
     }
   }
+  
   return true;
 }
-public boolean sonAmigos(Jugador j1, Jugador j2) {
-  return amistad[jugadores.indexOf(j1)].contains(j2) &&
-  amistad[jugadores.indexOf(j2)].contains(j1);
+
+public boolean sonAmigos(int i, int j) {
+  return amistad.get(i).contains(j) && amistad.get(j).contains(i);
 }
 ```
 
@@ -44,7 +43,7 @@ b) Los jugadores cuentan con unos puntos de logro que indican que tanto han logr
 public boolean compararLogros(Jugador j) {
   int pts = j.getPuntosLogro();
   
-  for(Jugador a : amistad[j.getID()]) {
+  for(Jugador a : amistad.get(j.getID())) {
     if(a.getPuntosLogro() > pts) return false;
   }
   

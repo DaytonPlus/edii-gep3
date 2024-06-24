@@ -71,21 +71,21 @@ public int cuantosDiasTarda(Computadora c1, Computadora c2) {
   Queue<Computadora> cola = new LinkedList<>();
   cola.offer(c1);
   
-  dias[computadoras.indexOf(c1)] = 0;
+  dias[c1.getID()] = 0;
     
   while(!cola.isEmpty()) {
     Computadora c = cola.poll();
     
-    int d = dias[computadoras.indexOf(c)];
+    int d = dias[c.getID()];
     
     if(c == c2) ​return d;
 
-    visitadas[computadoras.indexOf(c)] = true;
+    visitadas[c.getID()] = true;
     
     for(Computadora a : AdyacentesA(c)) {
-      if(!visitadas[computadoras.indexOf(a)]) {
+      if(!visitadas[a.getID()]) {
         cola.offer(a);
-        dias[computadoras.indexOf(a)] = d + 1;
+        dias[a.getID()] = d + 1;
       }
     }
   }

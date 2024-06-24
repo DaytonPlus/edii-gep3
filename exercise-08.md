@@ -24,19 +24,19 @@ Los sacerdotes siempre han sido famosos por sus útiles magias curativas que ayu
 a) Implemente el método castAlivio(jugador1: Jugador, jugador2 Jugador): logico que devuelve verdadero si es posible, teniendo a jugador1 como objetivo inicial, que Alivio llegue a sanar a jugador2.
 ```java
 public boolean castAlivio(Jugador j1, Jugador j2) {
-  List<Sala> visitadas = new LinkedList<>();
-  Queue<Sala> cola = new LinkedList<>();
+  List<Jugador> visitados = new LinkedList<>();
+  Queue<Jugador> cola = new LinkedList<>();
 
   cola.offer(j1);
   
   while(!cola.empty()) {
     Jugador j = cola.poll();
-    visitadas.add(j);
+    visitados.add(j);
 
     if(j == j2) return true;
 
     for(Jugador a : AdyacentesA(j)) {
-      if(!visitadas.contains(a) && distancias[jugadores.indexOf(j)][jugadores.indexOf(a)] <= 5) {
+      if(!visitados.contains(a) && distancias[jugadores.indexOf(j)][jugadores.indexOf(a)] <= 5) {
         cola.offer(a);
       }
     }
