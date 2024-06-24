@@ -23,8 +23,8 @@ Para ellos se cuenta con el siguiente diagrama de clases:
 a) Implementa el método sePidenEntreSi(): lógico, que retorna verdadero si existe al menos un par de personas que se pidan dinero entre ellos, retorna falso en caso contrario.
 ```java
 public boolean sePidenEntreSi() {
-  for(int i=0;i<personas.length;i++) {
-    for(int j=0;j<personas.length;j++) {
+  for(int i=0;i<personas.size();i++) {
+    for(int j=0;j<personas.size();j++) {
       if(sePiden(i, j)) return true;
     }
   }
@@ -42,18 +42,18 @@ public List<String> personasQuePierden(String nombreInicial) {
     List<String> lista = new LinkedList<>();
     List<String> visitadas = new LinkedList<>();
     Queue<String> cola = new Queue<>();
+    
     cola.offer(nombreInicial);
-    visitadas.add(nombreInicial);
 
     while (!cola.isEmpty()) {
         String nombre = cola.poll();
         visitadas.add(nombre);
         
         for (int i = 0; i < 2; i++) {
-            String conexion = conexiones[personas.indexOf(nombre)][i];
-            if (conexion != null && !visitadas.contains(conexion)) {
-                cola.offer(conexion);
-                lista.add(conexion);
+            String c = conexiones[personas.indexOf(nombre)][i];
+            if (c != null && !visitadas.contains(c)) {
+                cola.offer(c);
+                lista.add(c);
             }
         }
     }

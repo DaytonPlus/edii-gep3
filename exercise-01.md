@@ -29,7 +29,7 @@ vértices – Matriz de adyacencia y se modela en el siguiente diagrama de clase
 
 a) Implemente el método amigosEnComun(p1: Persona, p2: Persona): `Lista<cadena>`, el cual recibe dos personas, p1 y p2, por parámetros y retorna la lista con los emails de las personas que son amigos de p1 y p2 al mismo tiempo.
 ```java
-public Lista<String> amigosEnComun(Persona p1, Persona p2) {
+public List<String> amigosEnComun(Persona p1, Persona p2) {
   List<String> emails = new LinkedList<>();
   List<Persona> adys = AdyacentesA(p1);
 
@@ -57,14 +57,14 @@ public List<Persona> AdyacentesA(Persona p) {
 
 b) Implemente el método amistadCompleta(amigos: `Lista<Persona>`): lógico, el cual determina si el conjunto de personas, representado por la lista pasada por parámetro, tienen amistad completa. Amistad completa se tiene si entre cualquier par de personas del grafo, existe una arista.
 ```java
-public boolean amistadCompleta(Lista<Persona> amigos) {
+public boolean amistadCompleta(List<Persona> amigos) {
   if(amigos.length == 0) return false;
 
-  Persona p0 = amigos.get(0);
-  List<Persona> adys = AdyacentesA(p0);
+  Persona p = amigos.get(0);
+  List<Persona> adys = AdyacentesA(p);
 
-  for(Persona p : amigos) {
-    if(p != p0 && !adys.contains(p)) return false;
+  for(Persona a : amigos) {
+    if(a != p && !adys.contains(a)) return false;
   }
   
   return true;
@@ -73,7 +73,7 @@ public boolean amistadCompleta(Lista<Persona> amigos) {
 
 c) Cada cierto tiempo en la red social se hacen análisis y estadísticas con respecto a la cantidad de amigos que tienen los usuarios. Implemente el método cantPersonasConKAmigos(k: entero): entero, el cual retorna la cantidad de personas en la red social que tengan tantos amigos como el número pasado por parámetro. 
 ```java
-public int cantPersonasConKAmigos(entero k) {
+public int cantPersonasConKAmigos(int k) {
   int cant = 0;
   
   for(Persona p : personas) {
@@ -100,8 +100,9 @@ public boolean esPopular(Persona p) {
   return AdyacentesA(p).size() > 10;
 }
 
-public void BPP(Persona p, List<Persona> viditadas) {
+public void BPP(Persona p, List<Persona> visitadas) {
   visitadas.add(p);
+  
   for(Persona a : AdyacentesA(p)) {
     if(!visitadas.contains(a)) BPP(a, visitadas);
   }

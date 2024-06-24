@@ -31,6 +31,7 @@ public boolean casasInterconectadas(Casa c1, Casa c2) {
 
 public BPP(Casa c, List<Casa> visitadas) {
   visitadas.add(c);
+  
   for(Casa a : AdyacentesA(c)) {
     if(!visitadas.contains(a)) BPP(a, visitadas);
   }
@@ -56,6 +57,12 @@ public List<Pais> AdyacentesA(Casa c) {
 b) Cuando una casa tiene un cortocircuito en su red interna es posible que tenga consecuencias negativas para las casas directamente conectadas a ella. Implemente el método casasEnRiesgo(casa: Casa): `Lista<Casa>` el cual a partir de una casa devuelva las adyacentes que puedan estar en riego.
 ```java
 public Lista<Casa> casasEnRiesgo(Casa casa) {
-  return AdyacentesA(casa);
+  List<Casa> lista = new LinkedList<>();
+  
+  for(Casa a : AdyacentesA(casa)) {
+    if(a.getCortoCircuito()) lista.add(a);
+  }
+  
+  return lista;
 }
 ```

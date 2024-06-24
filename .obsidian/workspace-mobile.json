@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "exercise-01.md",
+                "file": "exercise-05.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
         "state": {
           "type": "backlink",
           "state": {
-            "file": "exercise-01.md",
+            "file": "exercise-05.md",
             "collapseAll": false,
             "extraContext": false,
             "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
         "state": {
           "type": "outgoing-link",
           "state": {
-            "file": "exercise-01.md",
+            "file": "exercise-05.md",
             "linksCollapsed": false,
             "unlinkedCollapsed": true
           }
@@ -114,7 +114,7 @@
         "state": {
           "type": "outline",
           "state": {
-            "file": "exercise-01.md"
+            "file": "exercise-05.md"
           }
         }
       }
@@ -133,12 +133,12 @@
   },
   "active": "7ee2c996a63b9a4f",
   "lastOpenFiles": [
+    "exercise-04.md",
+    "exercise-03.md",
+    "exercise-02.md",
+    "exercise-01.md",
     "navbar.md",
     "exercise-08.md",
-    "exercise-01.md",
-    "exercise-02.md",
-    "exercise-03.md",
-    "exercise-04.md",
     "exercise-05.md",
     "exercise-06.md",
     "exercise-07.md",

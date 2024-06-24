@@ -38,7 +38,7 @@ public boolean esAislada(Computadora c) {
 public List<Computadora> AdyacentesA(Computadora c) {
   List<Computadora> adys = new LinkedList<>();
   
-  int pos = c.getIndexOf(c);
+  int pos = computadoras.indexOf(c);
   
   if(pos != -1) {
     for(int i=0;i<conexiones[pos].length;i++) {
@@ -66,27 +66,26 @@ public int cuantasAltamenteVulnerable(Lista<Computadora> composibles) {
 c) Se desea saber cuántos días tarda en infectarse con un virus X la computadora 2 luego de que se infecte la computadora 1. Cuando una computadora se infecta con el virus X, al día siguiente se propaga a todas las computadoras conectadas directamente a ella, ese proceso de propagación del virus continúa hasta que todas las computadoras a las que puede alcanzar estén infectadas. Implemente el método cuantosDiasTarda( computadora1: Computadora, computadora2: Computadora): entero, que devuelve la cantidad de días que demora en ser infectada la computadora 2 luego de que la computadora 1 fue infectada. Si no existiera comunicación entre estas dos computadoras se debe retornar -1.
 ```java
 public int cuantosDiasTarda(Computadora c1, Computadora c2) {
-  boolean[] visitadas = new boolean[computadoras.size()];
   int[] dias = new int[computadoras.size()];
-  
+  boolean[] visitadas = new boolean[computadoras.size()];
   Queue<Computadora> cola = new LinkedList<>();
   cola.offer(c1);
   
-  dias[c1.getID()] = 0;
+  dias[computadoras.indexOf(c1)] = 0;
     
   while(!cola.isEmpty()) {
     Computadora c = cola.poll();
     
-    int d = dias[c.getID];
+    int d = dias[computadoras.indexOf(c)];
     
-    if(c.equals(c2)) ​return d;
-        
-    visitadas[c.getID()] = true;
+    if(c == c2) ​return d;
+
+    visitadas[computadoras.indexOf(c)] = true;
     
     for(Computadora a : AdyacentesA(c)) {
-      if(!visitadas[a.getID()]) {
+      if(!visitadas[computadoras.indexOf(a)]) {
         cola.offer(a);
-        dias[a.getID()] = d + 1;
+        dias[computadoras.indexOf(a)] = d + 1;
       }
     }
   }
