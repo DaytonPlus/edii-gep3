@@ -1,4 +1,12 @@
-![[navbar]]
+#### Ejercicios
+* [#1 - Red Social | Persona](exercise-01.md)
+* [#2 - RedComputadoras | Computadora](exercise-02.md)
+* [#3 - Pueblo](exercise-03.md)
+* [#4 - Europa | Pais](exercise-04.md)
+* [#5 - Red Electrica | Casas](exercise-05.md)
+* [#6 - Hermandad | Jugador](exercise-06.md)
+* [#7 - Laberinto | Sala](exercise-07.md)
+* [#8 - Raid | Jugador](exercise-08.md)
 
 ## Ejercicio 4
 Una empresa de envíos se encarga de entregas de paquetes por toda Europa, los cuales parten de un país y deben llegar a otro en la región. El siguiente diagrama de clases representa la región, contiene una lista de países y una matriz que contiene cuales países tienen fronteras terrestres con otros. De cada país se conoce su nombre y un valor de influencia que determina su importancia comercial para la empresa.
@@ -32,12 +40,14 @@ public boolean altaImportancia(Pais p) {
 
 public List<Pais> AdyacentesA(Pais p) {
   List<Pais> adys = new LinkedList<>();
+  
   int pos = paises.indexOf(p);
-  if(pos == -1) return adys;
-
-  for(int i=0;i<fronterasTerrestres[pos].length;i++) {
-    if(fronterasTerrestres[pos][i]) {
-      adys.add(paises.get(i));
+  
+  if(pos != -1) {
+    for(int i=0;i<fronterasTerrestres[pos].length;i++) {
+      if(fronterasTerrestres[pos][i]) {
+        adys.add(paises.get(i));
+      }
     }
   }
   

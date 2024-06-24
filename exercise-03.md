@@ -1,4 +1,13 @@
-![[navbar]]
+#### Ejercicios
+* [#1 - Red Social | Persona](exercise-01.md)
+* [#2 - RedComputadoras | Computadora](exercise-02.md)
+* [#3 - Pueblo](exercise-03.md)
+* [#4 - Europa | Pais](exercise-04.md)
+* [#5 - Red Electrica | Casas](exercise-05.md)
+* [#6 - Hermandad | Jugador](exercise-06.md)
+* [#7 - Laberinto | Sala](exercise-07.md)
+* [#8 - Raid | Jugador](exercise-08.md)
+
 ## Ejercicio 3
 La Comisión Internacional para la Prevención de Estafas está estudiando los posibles efectos de un esquema piramidal en un pueblo. El esquema es el siguiente: alguien le pide a otra persona $1, y le dice que les pida a otras dos personas $1 cada una y que, además, le diga a cada una que les pidan a otras dos personas dinero justo como ellos están haciendo. De esta forma, la víctima piensa que va a
 ganar $1. Como hay un número finito de personas en el mundo, no todos pueden ganar dinero de esta manera, esto es una estafa.

@@ -1,3 +1,6 @@
+## Ejercicios de la guía
+###### documento: `guia.pdf`
+
 #### Ejercicios
 * [#1 - Red Social | Persona](exercise-01.md)
 * [#2 - RedComputadoras | Computadora](exercise-02.md)

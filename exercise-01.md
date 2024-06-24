@@ -1,4 +1,13 @@
-![[navbar]]
+#### Ejercicios
+* [#1 - Red Social | Persona](exercise-01.md)
+* [#2 - RedComputadoras | Computadora](exercise-02.md)
+* [#3 - Pueblo](exercise-03.md)
+* [#4 - Europa | Pais](exercise-04.md)
+* [#5 - Red Electrica | Casas](exercise-05.md)
+* [#6 - Hermandad | Jugador](exercise-06.md)
+* [#7 - Laberinto | Sala](exercise-07.md)
+* [#8 - Raid | Jugador](exercise-08.md)
+
 ## Ejercicio 1
 Se desea hacer un sistema para controlar el estado de una red social en internet. 
 En dicha red social existe solo un tipo de relación, que es la relación de amistad. En 
@@ -33,13 +42,13 @@ public Lista<String> amigosEnComun(Persona p1, Persona p2) {
 
 public List<Persona> AdyacentesA(Persona p) {
   List<Persona> adys = new LinkedList<>();
-  int pos = personas.indexOf(p);
-  if(pos == -1) return adys;
   
-  boolean amist = amistades[pos];
-
-  for(int i=0;i<amist.length;i++) {
-    if(amist[i]) adys.add(personas.get(i));
+  int pos = personas.indexOf(p);
+  
+  if(pos != -1) {
+    for(int i=0;i<amistades[pos].length;i++) {
+      if(amistades[pos][i]) adys.add(personas.get(i));
+    }
   }
   
   return adys;
