@@ -51,9 +51,9 @@ public List<String> personasQuePierden(String nombreInicial) {
         
         for (int i = 0; i < 2; i++) {
             String c = conexiones[personas.indexOf(nombre)][i];
-            if (c != null && !visitadas.contains(c)) {
-                cola.offer(c);
-                lista.add(c);
+            if (c != null) {
+                if(!visitadas.contains(c)) cola.offer(c);
+                else lista.add(c);
             }
         }
     }
