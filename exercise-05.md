@@ -67,10 +67,14 @@ public Lista<Casa> casasEnRiesgo(Casa casa) {
     Casa c = cola.poll();
     visitadas.add(c);
 
+    boolean enRiesgo = c.getCortoCircuito();
+
     for(Persona a : AdyacentesA(c)) {
-      if(!visitadas.contains(a) && a.getCortoCircuito()) {
-        cola.offer(a);
-        lista.add(a);
+      if(!visitadas.contains(a)) {
+        if(enRiesgo || a.getCortoCircuito()) {
+          cola.offer(a);
+          lista.add(a);
+        }
       }
     }
   }
