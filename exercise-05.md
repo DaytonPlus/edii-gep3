@@ -57,7 +57,6 @@ public List<Pais> AdyacentesA(Casa c) {
 b) Cuando una casa tiene un cortocircuito en su red interna es posible que tenga consecuencias negativas para las casas directamente conectadas a ella. Implemente el método casasEnRiesgo(casa: Casa): `Lista<Casa>` el cual a partir de una casa devuelva las adyacentes que puedan estar en riego.
 ```java
 public Lista<Casa> casasEnRiesgo(Casa casa) {
-  List<Casa> lista = new LinkedList<>();
   List<Casa> visitadas = new LinkedList<>();
   Queue<Casa> cola = new Queue<>();
   
@@ -73,12 +72,11 @@ public Lista<Casa> casasEnRiesgo(Casa casa) {
       if(!visitadas.contains(a)) {
         if(enRiesgo || a.getCortoCircuito()) {
           cola.offer(a);
-          lista.add(a);
         }
       }
     }
   }
   
-  return lista;
+  return visitadas;
 }
 ```
